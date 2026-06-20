@@ -23,6 +23,7 @@ function Landing() {
     <div className="min-h-screen">
       <Nav />
       <Hero />
+      <SocialProof />
       <Features />
       <HowItWorks />
       <CodingGaming />
@@ -32,6 +33,27 @@ function Landing() {
       <CTA />
       <Footer />
     </div>
+  );
+}
+
+function SocialProof() {
+  const stats = [
+    { v: "50K+", l: "Active coders" },
+    { v: "500+", l: "Curated problems" },
+    { v: "25", l: "Boss battles" },
+    { v: "4.9★", l: "Avg. rating" },
+  ];
+  return (
+    <section className="px-4 lg:px-8 -mt-6 lg:-mt-10 relative z-10">
+      <div className="max-w-5xl mx-auto glass-strong rounded-2xl px-6 py-5 grid grid-cols-2 sm:grid-cols-4 gap-4">
+        {stats.map(s => (
+          <div key={s.l} className="text-center">
+            <div className="text-2xl font-bold gradient-text tabular-nums">{s.v}</div>
+            <div className="text-xs text-muted-foreground mt-0.5">{s.l}</div>
+          </div>
+        ))}
+      </div>
+    </section>
   );
 }
 
