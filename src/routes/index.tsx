@@ -38,20 +38,20 @@ function Landing() {
 function Nav() {
   return (
     <header className="sticky top-0 z-50 glass-strong border-b border-border/50">
-      <div className="max-w-7xl mx-auto px-4 lg:px-8 flex h-16 items-center">
-        <Link to="/" className="flex items-center gap-2">
-          <div className="h-9 w-9 rounded-lg gradient-hero-bg grid place-items-center font-bold text-white">CQ</div>
-          <span className="font-bold text-lg">CodeQuest<span className="text-accent">.AI</span></span>
+      <div className="max-w-7xl mx-auto px-4 lg:px-8 flex h-16 items-center gap-3">
+        <Link to="/" className="flex items-center gap-2 shrink-0">
+          <div className="h-9 w-9 rounded-lg gradient-hero-bg grid place-items-center font-bold text-white text-sm">CQ</div>
+          <span className="font-bold text-lg hidden xs:inline">CodeQuest<span className="text-accent">.AI</span></span>
         </Link>
-        <nav className="hidden md:flex items-center gap-7 ml-12 text-sm">
+        <nav className="hidden md:flex items-center gap-7 ml-8 text-sm">
           <a href="#features" className="text-muted-foreground hover:text-foreground transition">Features</a>
           <a href="#how" className="text-muted-foreground hover:text-foreground transition">How it works</a>
           <a href="#pricing" className="text-muted-foreground hover:text-foreground transition">Pricing</a>
           <a href="#testimonials" className="text-muted-foreground hover:text-foreground transition">Reviews</a>
         </nav>
         <div className="flex-1" />
-        <div className="flex items-center gap-2">
-          <Link to="/login"><Button variant="ghost" size="sm">Log in</Button></Link>
+        <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
+          <Link to="/login"><Button variant="ghost" size="sm" className="px-2.5 sm:px-3">Log in</Button></Link>
           <Link to="/register"><Button size="sm" className="gradient-primary-bg border-0 shadow-[var(--shadow-glow)]">Get Started</Button></Link>
         </div>
       </div>
