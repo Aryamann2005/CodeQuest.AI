@@ -228,9 +228,9 @@ function MentorSection() {
               <div className="flex-1 glass rounded-2xl rounded-tl-sm p-3 text-sm">Why does my BFS solution TLE on large graphs?</div>
             </div>
             <div className="flex items-start gap-3">
-              <div className="h-8 w-8 rounded-full gradient-primary-bg grid place-items-center"><Brain className="h-4 w-4 text-white" /></div>
-              <div className="flex-1 gradient-primary-bg/20 rounded-2xl rounded-tl-sm p-3 text-sm border border-primary/30">
-                Likely your queue uses array.shift() which is O(n). Switch to a deque or index pointer. Want me to walk through the optimized version?
+              <div className="h-8 w-8 rounded-full gradient-primary-bg grid place-items-center shrink-0"><Brain className="h-4 w-4 text-white" /></div>
+              <div className="flex-1 rounded-2xl rounded-tl-sm p-3 text-sm border border-primary/30 bg-primary/10">
+                Likely your queue uses <code className="font-mono text-accent">array.shift()</code> which is O(n). Switch to a deque or index pointer. Want me to walk through the optimized version?
               </div>
             </div>
             <div className="flex items-start gap-3">
