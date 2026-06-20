@@ -39,24 +39,31 @@ function Lb() {
                   </tr>
                 </thead>
                 <tbody>
-                  {leaderboard[tab].map((u, i) => (
-                    <tr key={u.rank} className={cn("border-b border-border/30 transition", u.you ? "bg-primary/10" : "hover:bg-sidebar-accent/30")}>
-                      <td className="p-4">
-                        <RankBadge rank={u.rank} />
-                      </td>
-                      <td className="p-4">
-                        <div className="flex items-center gap-3">
-                          <Avatar className="h-10 w-10 ring-2 ring-border"><AvatarImage src={`https://api.dicebear.com/9.x/adventurer/svg?seed=${u.avatar}`} /><AvatarFallback>{u.name[0]}</AvatarFallback></Avatar>
-                          <div className="min-w-0">
-                            <div className={cn("font-semibold text-sm truncate", u.you && "text-primary")}>{u.name}</div>
-                            <div className="text-xs text-muted-foreground">{u.title}</div>
-                          </div>
-                        </div>
-                      </td>
-                      <td className="p-4 text-right font-mono tabular-nums hidden sm:table-cell">{u.xp.toLocaleString()}</td>
-                      <td className="p-4 text-right font-mono tabular-nums">{u.solved}</td>
-                    </tr>
-                  ))}
+                  {leaderboard[tab].map((u, i, arr) => {
+                    const prev = arr[i - 1];
+                    const showGap = prev && u.rank - prev.rank > 1;
+                    return (
+                      <>
+                        {showGap && (
+                          <tr key={`gap-${u.rank}`}><td colSpan={4} className="p-2 text-center text-xs text-muted-foreground font-mono">· · ·</td></tr>
+                        )}
+                        <tr key={u.rank} className={cn("border-b border-border/30 transition", u.you ? "bg-primary/10 ring-1 ring-inset ring-primary/30" : "hover:bg-sidebar-accent/30")}>
+                          <td className="p-4"><RankBadge rank={u.rank} /></td>
+                          <td className="p-4">
+                            <div className="flex items-center gap-3">
+                              <Avatar className="h-10 w-10 ring-2 ring-border"><AvatarImage src={`https://api.dicebear.com/9.x/adventurer/svg?seed=${u.avatar}`} /><AvatarFallback>{u.name[0]}</AvatarFallback></Avatar>
+                              <div className="min-w-0">
+                                <div className={cn("font-semibold text-sm truncate", u.you && "text-primary")}>{u.name}</div>
+                                <div className="text-xs text-muted-foreground truncate">{u.title}</div>
+                              </div>
+                            </div>
+                          </td>
+                          <td className="p-4 text-right font-mono tabular-nums hidden sm:table-cell">{u.xp.toLocaleString()}</td>
+                          <td className="p-4 text-right font-mono tabular-nums">{u.solved}</td>
+                        </tr>
+                      </>
+                    );
+                  })}
                 </tbody>
               </table>
             </Card>
