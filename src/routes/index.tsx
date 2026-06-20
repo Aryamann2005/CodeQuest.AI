@@ -63,7 +63,7 @@ function Nav() {
       <div className="max-w-7xl mx-auto px-4 lg:px-8 flex h-16 items-center gap-3">
         <Link to="/" className="flex items-center gap-2 shrink-0">
           <div className="h-9 w-9 rounded-lg gradient-hero-bg grid place-items-center font-bold text-white text-sm">CQ</div>
-          <span className="font-bold text-lg hidden xs:inline">CodeQuest<span className="text-accent">.AI</span></span>
+          <span className="font-bold text-lg hidden sm:inline">CodeQuest<span className="text-accent">.AI</span></span>
         </Link>
         <nav className="hidden md:flex items-center gap-7 ml-8 text-sm">
           <a href="#features" className="text-muted-foreground hover:text-foreground transition">Features</a>
