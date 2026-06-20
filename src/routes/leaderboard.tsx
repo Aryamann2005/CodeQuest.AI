@@ -62,7 +62,7 @@ function Lb() {
                           <td className="p-4 text-right font-mono tabular-nums hidden sm:table-cell">{u.xp.toLocaleString()}</td>
                           <td className="p-4 text-right font-mono tabular-nums">{u.solved}</td>
                         </tr>
-                      </>
+                      </Fragment>
                     );
                   })}
                 </tbody>
