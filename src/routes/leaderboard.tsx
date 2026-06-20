@@ -44,11 +44,11 @@ function Lb() {
                     const prev = arr[i - 1];
                     const showGap = prev && u.rank - prev.rank > 1;
                     return (
-                      <>
+                      <Fragment key={u.rank}>
                         {showGap && (
-                          <tr key={`gap-${u.rank}`}><td colSpan={4} className="p-2 text-center text-xs text-muted-foreground font-mono">· · ·</td></tr>
+                          <tr><td colSpan={4} className="p-2 text-center text-xs text-muted-foreground font-mono tracking-widest">· · ·</td></tr>
                         )}
-                        <tr key={u.rank} className={cn("border-b border-border/30 transition", u.you ? "bg-primary/10 ring-1 ring-inset ring-primary/30" : "hover:bg-sidebar-accent/30")}>
+                        <tr className={cn("border-b border-border/30 transition", u.you ? "bg-primary/10 ring-1 ring-inset ring-primary/30" : "hover:bg-sidebar-accent/30")}>
                           <td className="p-4"><RankBadge rank={u.rank} /></td>
                           <td className="p-4">
                             <div className="flex items-center gap-3">
