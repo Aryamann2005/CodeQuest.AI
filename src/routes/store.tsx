@@ -4,6 +4,7 @@ import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { storeItems } from "@/lib/mock-data";
+import { user } from "@/lib/mock-data";
 import { Coins, Check, Crown } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { toast } from "sonner";
@@ -18,7 +19,7 @@ function Store() {
           <h1 className="text-2xl lg:text-3xl font-bold">Store</h1>
           <p className="text-muted-foreground mt-1">Spend coins on themes, cosmetics & premium plans.</p>
         </div>
-        <div className="glass rounded-xl px-4 py-2 flex items-center gap-2"><Coins className="h-4 w-4 text-accent" /><span className="font-semibold tabular-nums">1,245</span><span className="text-xs text-muted-foreground">coins</span></div>
+        <div className="glass-strong rounded-xl px-4 py-2 flex items-center gap-2 border border-accent/30"><Coins className="h-4 w-4 text-accent" /><span className="font-semibold tabular-nums">{user.coins.toLocaleString()}</span><span className="text-xs text-muted-foreground">coins</span></div>
       </div>
 
       <Tabs defaultValue="themes">

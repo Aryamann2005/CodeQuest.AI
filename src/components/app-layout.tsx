@@ -85,15 +85,15 @@ export function AppLayout({ children }: { children: ReactNode }) {
 
             <div className="flex-1" />
 
-            <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-warning/15 border border-warning/30">
+            <div className="hidden sm:flex items-center gap-2 px-3 py-1.5 rounded-full bg-warning/15 border border-warning/30" title="Daily streak">
               <Flame className="h-4 w-4 text-warning" />
               <span className="text-sm font-semibold tabular-nums">{user.streak}</span>
             </div>
-            <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-accent/15 border border-accent/30">
+            <div className="flex items-center gap-2 px-2.5 sm:px-3 py-1.5 rounded-full bg-accent/15 border border-accent/30" title="Coins">
               <Coins className="h-4 w-4 text-accent" />
               <span className="text-sm font-semibold tabular-nums">{user.coins.toLocaleString()}</span>
             </div>
-            <Button variant="ghost" size="icon" className="relative">
+            <Button variant="ghost" size="icon" aria-label="Notifications" className="relative">
               <Bell className="h-5 w-5" />
               <span className="absolute top-2 right-2 h-2 w-2 rounded-full bg-destructive animate-pulse" />
             </Button>

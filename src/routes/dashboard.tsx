@@ -129,10 +129,10 @@ function StatCard({ icon: Icon, label, value, color, bg }: any) {
 
 function QuickAction({ to, icon: Icon, label, desc, color }: any) {
   return (
-    <Link to={to} className="block glass rounded-xl p-3 flex items-center gap-3 hover:bg-sidebar-accent transition group">
-      <div className={`h-10 w-10 rounded-lg bg-gradient-to-br ${color} grid place-items-center shrink-0`}><Icon className="h-5 w-5 text-white" /></div>
+    <Link to={to} className="flex items-center gap-3 glass rounded-xl p-3 hover:bg-sidebar-accent hover:-translate-y-0.5 transition-all group">
+      <div className={`h-10 w-10 rounded-lg bg-gradient-to-br ${color} grid place-items-center shrink-0 shadow-md`}><Icon className="h-5 w-5 text-white" /></div>
       <div className="flex-1 min-w-0"><div className="font-medium text-sm">{label}</div><div className="text-xs text-muted-foreground truncate">{desc}</div></div>
-      <ArrowRight className="h-4 w-4 text-muted-foreground group-hover:translate-x-1 transition" />
+      <ArrowRight className="h-4 w-4 text-muted-foreground group-hover:translate-x-1 group-hover:text-primary transition" />
     </Link>
   );
 }

@@ -55,11 +55,22 @@ function BossBattle() {
                   </div>
                 </div>
 
-                <div className="mt-5 flex gap-2">
-                  <Button className="gradient-primary-bg border-0 shadow-[var(--shadow-glow)]" onClick={() => toast.success("Critical hit! -120 HP")}>
-                    <Swords className="h-4 w-4 mr-2" /> Attack (Solve Problem)
-                  </Button>
-                  <Button variant="outline" className="glass"><Sparkles className="h-4 w-4 mr-2 text-accent" /> Use Hint Card</Button>
+                <div className="mt-5 flex flex-wrap gap-2">
+                  {selected.defeated ? (
+                    <>
+                      <div className="inline-flex items-center gap-2 px-4 py-2 rounded-md bg-success/15 border border-success/40 text-success font-semibold text-sm">
+                        <Sparkles className="h-4 w-4" /> Victory · Boss Defeated
+                      </div>
+                      <Button variant="outline" className="glass">Claim Rewards</Button>
+                    </>
+                  ) : (
+                    <>
+                      <Button className="gradient-primary-bg border-0 shadow-[var(--shadow-glow)]" onClick={() => toast.success("Critical hit! -120 HP")}>
+                        <Swords className="h-4 w-4 mr-2" /> Attack (Solve Problem)
+                      </Button>
+                      <Button variant="outline" className="glass"><Sparkles className="h-4 w-4 mr-2 text-accent" /> Use Hint Card</Button>
+                    </>
+                  )}
                 </div>
               </div>
             </div>

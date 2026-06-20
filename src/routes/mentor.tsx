@@ -29,7 +29,7 @@ function Mentor() {
 
   return (
     <AppLayout>
-      <div className="grid lg:grid-cols-[280px_1fr] gap-4 h-[calc(100vh-8rem)]">
+      <div className="grid lg:grid-cols-[280px_1fr] gap-4 h-[calc(100dvh-9rem)] lg:h-[calc(100dvh-10rem)]">
         {/* Sidebar */}
         <Card className="glass-strong border-border/50 p-4 flex flex-col">
           <Button className="gradient-primary-bg border-0 w-full"><Plus className="h-4 w-4 mr-2" /> New Chat</Button>

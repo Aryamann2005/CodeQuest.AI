@@ -23,6 +23,7 @@ function Landing() {
     <div className="min-h-screen">
       <Nav />
       <Hero />
+      <SocialProof />
       <Features />
       <HowItWorks />
       <CodingGaming />
@@ -35,23 +36,44 @@ function Landing() {
   );
 }
 
+function SocialProof() {
+  const stats = [
+    { v: "50K+", l: "Active coders" },
+    { v: "500+", l: "Curated problems" },
+    { v: "25", l: "Boss battles" },
+    { v: "4.9★", l: "Avg. rating" },
+  ];
+  return (
+    <section className="px-4 lg:px-8 -mt-6 lg:-mt-10 relative z-10">
+      <div className="max-w-5xl mx-auto glass-strong rounded-2xl px-6 py-5 grid grid-cols-2 sm:grid-cols-4 gap-4">
+        {stats.map(s => (
+          <div key={s.l} className="text-center">
+            <div className="text-2xl font-bold gradient-text tabular-nums">{s.v}</div>
+            <div className="text-xs text-muted-foreground mt-0.5">{s.l}</div>
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+}
+
 function Nav() {
   return (
     <header className="sticky top-0 z-50 glass-strong border-b border-border/50">
-      <div className="max-w-7xl mx-auto px-4 lg:px-8 flex h-16 items-center">
-        <Link to="/" className="flex items-center gap-2">
-          <div className="h-9 w-9 rounded-lg gradient-hero-bg grid place-items-center font-bold text-white">CQ</div>
-          <span className="font-bold text-lg">CodeQuest<span className="text-accent">.AI</span></span>
+      <div className="max-w-7xl mx-auto px-4 lg:px-8 flex h-16 items-center gap-3">
+        <Link to="/" className="flex items-center gap-2 shrink-0">
+          <div className="h-9 w-9 rounded-lg gradient-hero-bg grid place-items-center font-bold text-white text-sm">CQ</div>
+          <span className="font-bold text-lg hidden sm:inline">CodeQuest<span className="text-accent">.AI</span></span>
         </Link>
-        <nav className="hidden md:flex items-center gap-7 ml-12 text-sm">
+        <nav className="hidden md:flex items-center gap-7 ml-8 text-sm">
           <a href="#features" className="text-muted-foreground hover:text-foreground transition">Features</a>
           <a href="#how" className="text-muted-foreground hover:text-foreground transition">How it works</a>
           <a href="#pricing" className="text-muted-foreground hover:text-foreground transition">Pricing</a>
           <a href="#testimonials" className="text-muted-foreground hover:text-foreground transition">Reviews</a>
         </nav>
         <div className="flex-1" />
-        <div className="flex items-center gap-2">
-          <Link to="/login"><Button variant="ghost" size="sm">Log in</Button></Link>
+        <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
+          <Link to="/login"><Button variant="ghost" size="sm" className="px-2.5 sm:px-3">Log in</Button></Link>
           <Link to="/register"><Button size="sm" className="gradient-primary-bg border-0 shadow-[var(--shadow-glow)]">Get Started</Button></Link>
         </div>
       </div>
@@ -228,9 +250,9 @@ function MentorSection() {
               <div className="flex-1 glass rounded-2xl rounded-tl-sm p-3 text-sm">Why does my BFS solution TLE on large graphs?</div>
             </div>
             <div className="flex items-start gap-3">
-              <div className="h-8 w-8 rounded-full gradient-primary-bg grid place-items-center"><Brain className="h-4 w-4 text-white" /></div>
-              <div className="flex-1 gradient-primary-bg/20 rounded-2xl rounded-tl-sm p-3 text-sm border border-primary/30">
-                Likely your queue uses array.shift() which is O(n). Switch to a deque or index pointer. Want me to walk through the optimized version?
+              <div className="h-8 w-8 rounded-full gradient-primary-bg grid place-items-center shrink-0"><Brain className="h-4 w-4 text-white" /></div>
+              <div className="flex-1 rounded-2xl rounded-tl-sm p-3 text-sm border border-primary/30 bg-primary/10">
+                Likely your queue uses <code className="font-mono text-accent">array.shift()</code> which is O(n). Switch to a deque or index pointer. Want me to walk through the optimized version?
               </div>
             </div>
             <div className="flex items-start gap-3">
