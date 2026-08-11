@@ -4,7 +4,7 @@ import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { storeItems } from "@/lib/mock-data";
-import { user } from "@/lib/mock-data";
+import { useAuth } from "@/lib/auth-context";
 import { Coins, Check, Crown } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { toast } from "sonner";
@@ -12,6 +12,9 @@ import { toast } from "sonner";
 export const Route = createFileRoute("/store")({ component: Store });
 
 function Store() {
+  const { profile } = useAuth();
+  if (!profile) return null;
+
   return (
     <AppLayout>
       <div className="mb-6 flex items-end justify-between flex-wrap gap-3">
@@ -19,15 +22,15 @@ function Store() {
           <h1 className="text-2xl lg:text-3xl font-bold">Store</h1>
           <p className="text-muted-foreground mt-1">Spend coins on themes, cosmetics & premium plans.</p>
         </div>
-        <div className="glass-strong rounded-xl px-4 py-2 flex items-center gap-2 border border-accent/30"><Coins className="h-4 w-4 text-accent" /><span className="font-semibold tabular-nums">{user.coins.toLocaleString()}</span><span className="text-xs text-muted-foreground">coins</span></div>
+        <div className="glass-strong rounded-xl px-4 py-2 flex items-center gap-2 border border-accent/30"><Coins className="h-4 w-4 text-accent" /><span className="font-semibold tabular-nums">{profile.coins.toLocaleString()}</span><span className="text-xs text-muted-foreground">coins</span></div>
       </div>
 
       <Tabs defaultValue="themes">
         <TabsList className="glass"><TabsTrigger value="themes">Themes</TabsTrigger><TabsTrigger value="avatars">Avatars</TabsTrigger><TabsTrigger value="cosmetics">Cosmetics</TabsTrigger><TabsTrigger value="premium">Premium</TabsTrigger></TabsList>
 
-        <TabsContent value="themes" className="mt-6"><Grid items={storeItems.themes} /></TabsContent>
-        <TabsContent value="avatars" className="mt-6"><Grid items={storeItems.avatars} /></TabsContent>
-        <TabsContent value="cosmetics" className="mt-6"><Grid items={storeItems.cosmetics} /></TabsContent>
+        <TabsContent value="themes" className="mt-6"><Grid items={storeItems.themes} coins={profile.coins} /></TabsContent>
+        <TabsContent value="avatars" className="mt-6"><Grid items={storeItems.avatars} coins={profile.coins} /></TabsContent>
+        <TabsContent value="cosmetics" className="mt-6"><Grid items={storeItems.cosmetics} coins={profile.coins} /></TabsContent>
 
         <TabsContent value="premium" className="mt-6">
           <div className="grid md:grid-cols-3 gap-5">
@@ -47,7 +50,7 @@ function Store() {
   );
 }
 
-function Grid({ items }: { items: any[] }) {
+function Grid({ items, coins }: { items: any[]; coins: number }) {
   return (
     <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
       {items.map(i => (
@@ -58,7 +61,14 @@ function Grid({ items }: { items: any[] }) {
             <div className="flex items-center gap-1.5 text-sm font-semibold"><Coins className="h-4 w-4 text-accent" /> {i.price}</div>
             {i.owned
               ? <span className="text-xs text-success font-semibold flex items-center gap-1"><Check className="h-3.5 w-3.5" /> Owned</span>
-              : <Button size="sm" className="gradient-primary-bg border-0" onClick={() => toast.success(`${i.name} purchased!`)}>Buy</Button>}
+              : <Button
+                  size="sm"
+                  className="gradient-primary-bg border-0"
+                  disabled={coins < i.price}
+                  onClick={() => toast.info("Store purchases are not enabled yet. Your coins were not charged.")}
+                >
+                  {coins < i.price ? "Need more" : "Buy"}
+                </Button>}
           </div>
         </Card>
       ))}

@@ -13,37 +13,6 @@ export const user = {
   globalRank: 342,
 };
 
-export const dailyMissions = [
-  { id: 1, title: "Solve 3 Array problems", progress: 2, total: 3, xp: 150, coins: 50, done: false },
-  { id: 2, title: "Win a Boss Battle", progress: 0, total: 1, xp: 300, coins: 120, done: false },
-  { id: 3, title: "Maintain 7-day streak", progress: 7, total: 7, xp: 200, coins: 80, done: true },
-  { id: 4, title: "Ask AI Mentor 5 questions", progress: 3, total: 5, xp: 100, coins: 40, done: false },
-];
-
-export const learningProgress = [
-  { topic: "Arrays", progress: 92 },
-  { topic: "Strings", progress: 78 },
-  { topic: "Linked List", progress: 64 },
-  { topic: "Trees", progress: 45 },
-  { topic: "Graphs", progress: 22 },
-  { topic: "Dynamic Programming", progress: 10 },
-];
-
-export const problems = [
-  { id: 1, title: "Two Sum", difficulty: "Easy", topic: "Arrays", acceptance: 89, solved: true, xp: 50 },
-  { id: 2, title: "Valid Parentheses", difficulty: "Easy", topic: "Stack", acceptance: 82, solved: true, xp: 50 },
-  { id: 3, title: "Merge Two Sorted Lists", difficulty: "Easy", topic: "Linked List", acceptance: 75, solved: false, xp: 60 },
-  { id: 4, title: "Longest Substring Without Repeating", difficulty: "Medium", topic: "Strings", acceptance: 58, solved: true, xp: 120 },
-  { id: 5, title: "Add Two Numbers", difficulty: "Medium", topic: "Linked List", acceptance: 49, solved: false, xp: 120 },
-  { id: 6, title: "3Sum", difficulty: "Medium", topic: "Arrays", acceptance: 42, solved: false, xp: 150 },
-  { id: 7, title: "Trapping Rain Water", difficulty: "Hard", topic: "Arrays", acceptance: 31, solved: false, xp: 300 },
-  { id: 8, title: "Median of Two Sorted Arrays", difficulty: "Hard", topic: "Arrays", acceptance: 28, solved: false, xp: 350 },
-  { id: 9, title: "Binary Tree Inorder Traversal", difficulty: "Easy", topic: "Trees", acceptance: 78, solved: true, xp: 60 },
-  { id: 10, title: "Number of Islands", difficulty: "Medium", topic: "Graphs", acceptance: 55, solved: false, xp: 180 },
-  { id: 11, title: "Word Ladder", difficulty: "Hard", topic: "Graphs", acceptance: 25, solved: false, xp: 320 },
-  { id: 12, title: "LRU Cache", difficulty: "Medium", topic: "Linked List", acceptance: 41, solved: false, xp: 200 },
-];
-
 export const bosses = [
   {
     id: "graph-dragon",
@@ -92,58 +61,197 @@ export const damageLog = [
   { time: "Yesterday", action: "Solved 'Word Ladder'", damage: 250 },
 ];
 
-export const skillTree = [
-  { id: "arrays", name: "Arrays", level: 8, unlocked: true, completed: true, x: 10, y: 50 },
-  { id: "strings", name: "Strings", level: 6, unlocked: true, completed: true, x: 25, y: 25 },
-  { id: "linked", name: "Linked List", level: 5, unlocked: true, completed: false, x: 25, y: 75 },
-  { id: "stack", name: "Stack", level: 4, unlocked: true, completed: false, x: 45, y: 25 },
-  { id: "queue", name: "Queue", level: 3, unlocked: true, completed: false, x: 45, y: 75 },
-  { id: "trees", name: "Trees", level: 2, unlocked: true, completed: false, x: 65, y: 50 },
-  { id: "graphs", name: "Graphs", level: 1, unlocked: false, completed: false, x: 80, y: 25 },
-  { id: "dp", name: "Dynamic Programming", level: 0, unlocked: false, completed: false, x: 80, y: 75 },
-];
-
-export const skillEdges = [
-  ["arrays", "strings"], ["arrays", "linked"],
-  ["strings", "stack"], ["linked", "queue"],
-  ["stack", "trees"], ["queue", "trees"],
-  ["trees", "graphs"], ["trees", "dp"],
-];
-
 export const leaderboard = {
   global: [
-    { rank: 1, name: "Riya Kapoor", title: "Legendary Developer", xp: 124800, solved: 1240, avatar: "Riya" },
-    { rank: 2, name: "Kenji Tanaka", title: "Graph Dragon Slayer", xp: 118500, solved: 1198, avatar: "Kenji" },
-    { rank: 3, name: "Sofia Alvarez", title: "Tree Guardian", xp: 109200, solved: 1102, avatar: "Sofia" },
-    { rank: 4, name: "Marcus Chen", title: "Stack Warrior", xp: 98750, solved: 987, avatar: "Marcus" },
-    { rank: 5, name: "Priya Sharma", title: "Linked List Knight", xp: 92100, solved: 945, avatar: "Priya" },
-    { rank: 6, name: "Liam O'Brien", title: "Array Apprentice", xp: 88400, solved: 901, avatar: "Liam" },
+    {
+      rank: 1,
+      name: "Riya Kapoor",
+      title: "Legendary Developer",
+      xp: 124800,
+      solved: 1240,
+      avatar: "Riya",
+    },
+    {
+      rank: 2,
+      name: "Kenji Tanaka",
+      title: "Graph Dragon Slayer",
+      xp: 118500,
+      solved: 1198,
+      avatar: "Kenji",
+    },
+    {
+      rank: 3,
+      name: "Sofia Alvarez",
+      title: "Tree Guardian",
+      xp: 109200,
+      solved: 1102,
+      avatar: "Sofia",
+    },
+    {
+      rank: 4,
+      name: "Marcus Chen",
+      title: "Stack Warrior",
+      xp: 98750,
+      solved: 987,
+      avatar: "Marcus",
+    },
+    {
+      rank: 5,
+      name: "Priya Sharma",
+      title: "Linked List Knight",
+      xp: 92100,
+      solved: 945,
+      avatar: "Priya",
+    },
+    {
+      rank: 6,
+      name: "Liam O'Brien",
+      title: "Array Apprentice",
+      xp: 88400,
+      solved: 901,
+      avatar: "Liam",
+    },
     { rank: 7, name: "Yuki Sato", title: "Tree Guardian", xp: 84200, solved: 872, avatar: "Yuki" },
-    { rank: 342, name: "Aarav Mehta (You)", title: "Tree Guardian", xp: 4820, solved: 187, avatar: "Aarav", you: true },
+    {
+      rank: 342,
+      name: "Aarav Mehta (You)",
+      title: "Tree Guardian",
+      xp: 4820,
+      solved: 187,
+      avatar: "Aarav",
+      you: true,
+    },
   ],
   friends: [
-    { rank: 1, name: "Devansh", title: "Graph Dragon Slayer", xp: 14200, solved: 412, avatar: "Devansh" },
-    { rank: 2, name: "Aarav Mehta (You)", title: "Tree Guardian", xp: 4820, solved: 187, avatar: "Aarav", you: true },
+    {
+      rank: 1,
+      name: "Devansh",
+      title: "Graph Dragon Slayer",
+      xp: 14200,
+      solved: 412,
+      avatar: "Devansh",
+    },
+    {
+      rank: 2,
+      name: "Aarav Mehta (You)",
+      title: "Tree Guardian",
+      xp: 4820,
+      solved: 187,
+      avatar: "Aarav",
+      you: true,
+    },
     { rank: 3, name: "Sneha", title: "Stack Warrior", xp: 3960, solved: 154, avatar: "Sneha" },
-    { rank: 4, name: "Vikram", title: "Linked List Knight", xp: 2800, solved: 112, avatar: "Vikram" },
+    {
+      rank: 4,
+      name: "Vikram",
+      title: "Linked List Knight",
+      xp: 2800,
+      solved: 112,
+      avatar: "Vikram",
+    },
   ],
   college: [
-    { rank: 1, name: "Ananya Iyer", title: "Tree Guardian", xp: 8420, solved: 298, avatar: "Ananya" },
-    { rank: 2, name: "Rohit Verma", title: "Stack Warrior", xp: 7100, solved: 241, avatar: "Rohit" },
-    { rank: 3, name: "Aarav Mehta (You)", title: "Tree Guardian", xp: 4820, solved: 187, avatar: "Aarav", you: true },
-    { rank: 4, name: "Meera Joshi", title: "Array Apprentice", xp: 3200, solved: 142, avatar: "Meera" },
+    {
+      rank: 1,
+      name: "Ananya Iyer",
+      title: "Tree Guardian",
+      xp: 8420,
+      solved: 298,
+      avatar: "Ananya",
+    },
+    {
+      rank: 2,
+      name: "Rohit Verma",
+      title: "Stack Warrior",
+      xp: 7100,
+      solved: 241,
+      avatar: "Rohit",
+    },
+    {
+      rank: 3,
+      name: "Aarav Mehta (You)",
+      title: "Tree Guardian",
+      xp: 4820,
+      solved: 187,
+      avatar: "Aarav",
+      you: true,
+    },
+    {
+      rank: 4,
+      name: "Meera Joshi",
+      title: "Array Apprentice",
+      xp: 3200,
+      solved: 142,
+      avatar: "Meera",
+    },
   ],
 };
 
 export const achievements = [
-  { id: 1, name: "First Steps", desc: "Solve your first problem", icon: "👶", unlocked: true, rarity: "common" },
-  { id: 2, name: "Array Apprentice", desc: "Solve 50 Array problems", icon: "📦", unlocked: true, rarity: "common" },
-  { id: 3, name: "Streak Master", desc: "Maintain a 30-day streak", icon: "🔥", unlocked: true, rarity: "rare" },
-  { id: 4, name: "Boss Slayer", desc: "Defeat 5 bosses", icon: "⚔️", unlocked: true, rarity: "rare" },
-  { id: 5, name: "Tree Guardian", desc: "Master all Tree problems", icon: "🌳", unlocked: true, rarity: "epic" },
-  { id: 6, name: "Graph Dragon Slayer", desc: "Defeat the Graph Dragon", icon: "🐉", unlocked: false, rarity: "legendary" },
-  { id: 7, name: "Speed Runner", desc: "Solve 10 problems in under an hour", icon: "⚡", unlocked: false, rarity: "epic" },
-  { id: 8, name: "Legendary Developer", desc: "Reach level 100", icon: "👑", unlocked: false, rarity: "mythic" },
+  {
+    id: 1,
+    name: "First Steps",
+    desc: "Solve your first problem",
+    icon: "👶",
+    unlocked: true,
+    rarity: "common",
+  },
+  {
+    id: 2,
+    name: "Array Apprentice",
+    desc: "Solve 50 Array problems",
+    icon: "📦",
+    unlocked: true,
+    rarity: "common",
+  },
+  {
+    id: 3,
+    name: "Streak Master",
+    desc: "Maintain a 30-day streak",
+    icon: "🔥",
+    unlocked: true,
+    rarity: "rare",
+  },
+  {
+    id: 4,
+    name: "Boss Slayer",
+    desc: "Defeat 5 bosses",
+    icon: "⚔️",
+    unlocked: true,
+    rarity: "rare",
+  },
+  {
+    id: 5,
+    name: "Tree Guardian",
+    desc: "Master all Tree problems",
+    icon: "🌳",
+    unlocked: true,
+    rarity: "epic",
+  },
+  {
+    id: 6,
+    name: "Graph Dragon Slayer",
+    desc: "Defeat the Graph Dragon",
+    icon: "🐉",
+    unlocked: false,
+    rarity: "legendary",
+  },
+  {
+    id: 7,
+    name: "Speed Runner",
+    desc: "Solve 10 problems in under an hour",
+    icon: "⚡",
+    unlocked: false,
+    rarity: "epic",
+  },
+  {
+    id: 8,
+    name: "Legendary Developer",
+    desc: "Reach level 100",
+    icon: "👑",
+    unlocked: false,
+    rarity: "mythic",
+  },
 ];
 
 export const activityHistory = [
@@ -169,9 +277,27 @@ export const storeItems = {
     { id: 4, name: "Dragon Rider", price: 1500, image: "🐲", owned: false },
   ],
   plans: [
-    { id: 1, name: "Quest Pass", price: "₹299/mo", perks: ["2x XP", "Daily AI Hints", "Exclusive Themes"], popular: false },
-    { id: 2, name: "Hero Pass", price: "₹599/mo", perks: ["3x XP", "Unlimited AI Mentor", "All Themes", "Priority Battles"], popular: true },
-    { id: 3, name: "Legend Pass", price: "₹4999/yr", perks: ["5x XP", "Unlimited Everything", "Exclusive Title", "Beta Access"], popular: false },
+    {
+      id: 1,
+      name: "Quest Pass",
+      price: "₹299/mo",
+      perks: ["2x XP", "Daily AI Hints", "Exclusive Themes"],
+      popular: false,
+    },
+    {
+      id: 2,
+      name: "Hero Pass",
+      price: "₹599/mo",
+      perks: ["3x XP", "Unlimited AI Mentor", "All Themes", "Priority Battles"],
+      popular: true,
+    },
+    {
+      id: 3,
+      name: "Legend Pass",
+      price: "₹4999/yr",
+      perks: ["5x XP", "Unlimited Everything", "Exclusive Title", "Beta Access"],
+      popular: false,
+    },
   ],
   cosmetics: [
     { id: 1, name: "Golden Crown Frame", price: 1000, image: "👑", owned: false },
@@ -188,12 +314,7 @@ export const aiConversations = [
   { id: 4, title: "Time complexity of merge sort", time: "Last week" },
 ];
 
-export const suggestedQuestions = [
-  "Explain Big-O notation with examples",
-  "How does the sliding window pattern work?",
-  "What's the difference between BFS and DFS?",
-  "Walk me through dynamic programming",
-];
+export const suggestedQuestions = ["Explain Big-O notation with examples", "How does the sliding window pattern work?", "What's the difference between BFS and DFS?", "Walk me through dynamic programming"];
 
 export const pricingPlans = [
   {
@@ -225,16 +346,55 @@ export const pricingPlans = [
 ];
 
 export const testimonials = [
-  { name: "Ishaan Gupta", role: "SDE @ Google", avatar: "Ishaan", quote: "I cracked my FAANG interview after grinding boss battles for 3 months. The RPG system made it addictive in the best way." },
-  { name: "Neha Reddy", role: "CS Student, IIT", avatar: "Neha", quote: "The AI Mentor explains concepts better than most YouTube tutorials. I went from confused to confident on Graphs in a week." },
-  { name: "Aditya Singh", role: "Full Stack Dev", avatar: "Aditya", quote: "Finally a platform that doesn't feel like homework. Levelling up while learning DSA is genius." },
+  {
+    name: "Ishaan Gupta",
+    role: "SDE @ Google",
+    avatar: "Ishaan",
+    quote: "I cracked my FAANG interview after grinding boss battles for 3 months. The RPG system made it addictive in the best way.",
+  },
+  {
+    name: "Neha Reddy",
+    role: "CS Student, IIT",
+    avatar: "Neha",
+    quote: "The AI Mentor explains concepts better than most YouTube tutorials. I went from confused to confident on Graphs in a week.",
+  },
+  {
+    name: "Aditya Singh",
+    role: "Full Stack Dev",
+    avatar: "Aditya",
+    quote: "Finally a platform that doesn't feel like homework. Levelling up while learning DSA is genius.",
+  },
 ];
 
 export const features = [
-  { icon: "⚔️", title: "Boss Battles", desc: "Defeat coding bosses by solving themed problem sets. Earn legendary loot." },
-  { icon: "🧠", title: "AI Mentor", desc: "Stuck? Your personal AI coach gives hints, explains concepts, and reviews code." },
-  { icon: "🌳", title: "Skill Tree", desc: "Visualize your mastery. Unlock new branches as you grow stronger." },
-  { icon: "🔥", title: "Daily Streaks", desc: "Build the habit. Maintain streaks, complete missions, climb leaderboards." },
-  { icon: "🏆", title: "Live Tournaments", desc: "Battle other coders in real-time ranked matches every weekend." },
-  { icon: "🎨", title: "Cosmetic Rewards", desc: "Themes, avatars, frames, titles — make CodeQuest yours." },
+  {
+    icon: "⚔️",
+    title: "Boss Battles",
+    desc: "Defeat coding bosses by solving themed problem sets. Earn legendary loot.",
+  },
+  {
+    icon: "🧠",
+    title: "AI Mentor",
+    desc: "Stuck? Your personal AI coach gives hints, explains concepts, and reviews code.",
+  },
+  {
+    icon: "🌳",
+    title: "Skill Tree",
+    desc: "Visualize your mastery. Unlock new branches as you grow stronger.",
+  },
+  {
+    icon: "🔥",
+    title: "Daily Streaks",
+    desc: "Build the habit. Maintain streaks, complete missions, climb leaderboards.",
+  },
+  {
+    icon: "🏆",
+    title: "Live Tournaments",
+    desc: "Battle other coders in real-time ranked matches every weekend.",
+  },
+  {
+    icon: "🎨",
+    title: "Cosmetic Rewards",
+    desc: "Themes, avatars, frames, titles — make CodeQuest yours.",
+  },
 ];

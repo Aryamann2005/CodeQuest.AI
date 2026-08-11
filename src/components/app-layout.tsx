@@ -1,13 +1,13 @@
-import { Link, useRouterState } from "@tanstack/react-router";
-import { type ReactNode } from "react";
+import { Link, useNavigate, useRouterState } from "@tanstack/react-router";
+import { useEffect, type ReactNode } from "react";
 import {
-  LayoutDashboard, Swords, Brain, Skull, GitBranch, Trophy, User, Store, Flame, Coins, Bell, Menu,
+  LayoutDashboard, Swords, Brain, Skull, GitBranch, Trophy, User, Store, Flame, Coins, Bell, Menu, LogOut,
 } from "lucide-react";
-import { user } from "@/lib/mock-data";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { cn } from "@/lib/utils";
+import { useAuth, type Profile } from "@/lib/auth-context";
 
 const nav = [
   { to: "/dashboard", label: "Dashboard", icon: LayoutDashboard },
@@ -20,7 +20,8 @@ const nav = [
   { to: "/store", label: "Store", icon: Store },
 ];
 
-function SidebarBody({ pathname, onNavigate }: { pathname: string; onNavigate?: () => void }) {
+function SidebarBody({ pathname, profile, onNavigate }: { pathname: string; profile: Profile; onNavigate?: () => void }) {
+  const avatar = profile.avatar_url || `https://api.dicebear.com/9.x/adventurer/svg?seed=${encodeURIComponent(profile.full_name)}`;
   return (
     <div className="flex h-full flex-col">
       <Link to="/" className="flex items-center gap-2 px-6 py-5 border-b border-border/50">
@@ -47,12 +48,12 @@ function SidebarBody({ pathname, onNavigate }: { pathname: string; onNavigate?: 
       <div className="p-4 border-t border-border/50">
         <div className="glass rounded-xl p-3 flex items-center gap-3">
           <Avatar className="h-10 w-10 ring-2 ring-primary/40">
-            <AvatarImage src={user.avatar} />
-            <AvatarFallback>AM</AvatarFallback>
+            <AvatarImage src={avatar} />
+            <AvatarFallback>{profile.full_name.slice(0, 2).toUpperCase()}</AvatarFallback>
           </Avatar>
           <div className="min-w-0">
-            <div className="text-sm font-semibold truncate">{user.name}</div>
-            <div className="text-xs text-muted-foreground truncate">Lv {user.level} · {user.title}</div>
+            <div className="text-sm font-semibold truncate">{profile.full_name}</div>
+            <div className="text-xs text-muted-foreground truncate">Lv {profile.level} · {profile.title}</div>
           </div>
         </div>
       </div>
@@ -62,12 +63,22 @@ function SidebarBody({ pathname, onNavigate }: { pathname: string; onNavigate?: 
 
 export function AppLayout({ children }: { children: ReactNode }) {
   const pathname = useRouterState({ select: (s) => s.location.pathname });
+  const navigate = useNavigate();
+  const { session, profile, loading, signOut } = useAuth();
+
+  useEffect(() => {
+    if (!loading && !session) navigate({ to: "/login", replace: true });
+  }, [loading, session, navigate]);
+
+  if (loading || !profile) {
+    return <div className="min-h-screen grid place-items-center text-muted-foreground">Loading your quest...</div>;
+  }
 
   return (
     <div className="min-h-screen flex w-full">
       {/* Desktop sidebar */}
       <aside className="hidden lg:flex w-64 shrink-0 border-r border-border/50 bg-sidebar/60 backdrop-blur-xl flex-col sticky top-0 h-screen">
-        <SidebarBody pathname={pathname} />
+        <SidebarBody pathname={pathname} profile={profile} />
       </aside>
 
       <div className="flex-1 flex flex-col min-w-0">
@@ -79,7 +90,7 @@ export function AppLayout({ children }: { children: ReactNode }) {
                 <Button variant="ghost" size="icon" className="lg:hidden"><Menu /></Button>
               </SheetTrigger>
               <SheetContent side="left" className="p-0 w-72 bg-sidebar">
-                <SidebarBody pathname={pathname} />
+                <SidebarBody pathname={pathname} profile={profile} />
               </SheetContent>
             </Sheet>
 
@@ -87,15 +98,27 @@ export function AppLayout({ children }: { children: ReactNode }) {
 
             <div className="hidden sm:flex items-center gap-2 px-3 py-1.5 rounded-full bg-warning/15 border border-warning/30" title="Daily streak">
               <Flame className="h-4 w-4 text-warning" />
-              <span className="text-sm font-semibold tabular-nums">{user.streak}</span>
+              <span className="text-sm font-semibold tabular-nums">{profile.streak}</span>
             </div>
             <div className="flex items-center gap-2 px-2.5 sm:px-3 py-1.5 rounded-full bg-accent/15 border border-accent/30" title="Coins">
               <Coins className="h-4 w-4 text-accent" />
-              <span className="text-sm font-semibold tabular-nums">{user.coins.toLocaleString()}</span>
+              <span className="text-sm font-semibold tabular-nums">{profile.coins.toLocaleString()}</span>
             </div>
             <Button variant="ghost" size="icon" aria-label="Notifications" className="relative">
               <Bell className="h-5 w-5" />
               <span className="absolute top-2 right-2 h-2 w-2 rounded-full bg-destructive animate-pulse" />
+            </Button>
+            <Button
+              variant="ghost"
+              size="icon"
+              aria-label="Log out"
+              title="Log out"
+              onClick={async () => {
+                await signOut();
+                navigate({ to: "/login" });
+              }}
+            >
+              <LogOut className="h-5 w-5" />
             </Button>
           </div>
         </header>
